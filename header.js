@@ -1,13 +1,21 @@
-
-document.addEventListener("DOMContentLoaded", () => {
-  // ====== MOBILE MENU FUNCTIONALITY ======
+function initHeader() {
   const hamburger = document.querySelector(".hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
   const closeButton = document.querySelector(".close-menu");
   const dropdownButtons = document.querySelectorAll("#mobile-menu button");
 
-  // Toggle mobile menu visibility
-  hamburger?.addEventListener("click", () => {
+  // Wait for elements to exist before binding events
+  if (!hamburger || !mobileMenu) {
+    console.log("⏳ Waiting for header elements...");
+    setTimeout(initHeader, 200);
+    return;
+  }
+
+  console.log("✅ Header elements found — initializing menu.");
+
+  // ====== MOBILE MENU FUNCTIONALITY ======
+  hamburger.addEventListener("click", () => {
+    console.log("☰ clicked!");
     mobileMenu.classList.toggle("active");
   });
 
@@ -27,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Toggle submenus in mobile menu
-  dropdownButtons.forEach(button => {
+  dropdownButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
       const targetId = button.getAttribute("data-target");
@@ -36,56 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ====== MOVE .MTN-HEADER OUTSIDE #SITEWRAPPER ======
+  // ====== MOVE HEADER OUTSIDE SITEWRAPPER ======
   const moveHeader = () => {
-    const mtnHeader = document.querySelector('.mtn-header');
-    const siteWrapper = document.getElementById('siteWrapper');
-    const body = document.querySelector('body');
+    const mtnHeader = document.querySelector(".mtn-header");
+    const siteWrapper = document.getElementById("siteWrapper");
+    const body = document.querySelector("body");
 
     if (mtnHeader && siteWrapper && body) {
       body.insertBefore(mtnHeader, siteWrapper);
-      console.log('Moved .mtn-header outside #siteWrapper');
+      console.log("Moved .mtn-header outside #siteWrapper");
     } else {
-      // Retry after 100ms if not ready
       setTimeout(moveHeader, 100);
     }
   };
 
-  moveHeader(); // Initial call
-});
+  moveHeader();
+  console.log("✅ Mobile header fully initialized");
+}
 
-
-
-
-// === Mobile Accordion Dropdown for Solutions ===
-document.addEventListener("DOMContentLoaded", () => {
-  const mobileAccordions = document.querySelectorAll(".mobile-accordion-toggle");
-
-  mobileAccordions.forEach((toggle) => {
-    toggle.addEventListener("click", function () {
-      const panel = this.nextElementSibling;
-      const icon = this.querySelector(".plus-icon");
-      const isOpen = panel.classList.contains("open");
-
-      // Close all panels
-      document.querySelectorAll(".mobile-accordion-panel").forEach((p) => {
-        p.style.maxHeight = null;
-        p.classList.remove("open");
-      });
-      document.querySelectorAll(".plus-icon").forEach((i) => {
-        i.textContent = "+";
-      });
-
-      // Toggle current panel
-      if (!isOpen) {
-        panel.classList.add("open");
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        icon.textContent = "−";
-      } else {
-        panel.classList.remove("open");
-        panel.style.maxHeight = null;
-        icon.textContent = "+";
-      }
-    });
-  });
-});
+initHeader();
