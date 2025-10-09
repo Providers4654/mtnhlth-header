@@ -552,3 +552,36 @@ body {
     padding-top: 6px;      /* gentle breathing room */
   }
 }
+
+
+
+/* === Layer and stacking fixes for mobile menu visibility === */
+.mtn-header {
+  position: relative;
+  z-index: 9999 !important;
+}
+
+.mobile-menu {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999 !important;
+  background: #000;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+/* Ensure Squarespace native header stays behind */
+header,
+.Header,
+.sqs-header {
+  z-index: 100 !important;
+}
+
