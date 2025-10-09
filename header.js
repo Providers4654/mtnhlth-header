@@ -1,4 +1,4 @@
-<script>
+
 document.addEventListener("DOMContentLoaded", () => {
   // ====== MOBILE MENU FUNCTIONALITY ======
   const hamburger = document.querySelector(".hamburger");
@@ -89,4 +89,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-</script>
