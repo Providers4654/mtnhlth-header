@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   moveHeader(); // Initial call
 });
-</script>
 
 
-<script>
+
+
 // === Mobile Accordion Dropdown for Solutions ===
 document.addEventListener("DOMContentLoaded", () => {
   const mobileAccordions = document.querySelectorAll(".mobile-accordion-toggle");
