@@ -4,7 +4,6 @@ function initHeader() {
   const closeButton = document.querySelector(".close-menu");
   const dropdownButtons = document.querySelectorAll("#mobile-menu button");
 
-  // Wait for elements to exist before binding events
   if (!hamburger || !mobileMenu) {
     console.log("⏳ Waiting for header elements...");
     setTimeout(initHeader, 200);
@@ -13,28 +12,44 @@ function initHeader() {
 
   console.log("✅ Header elements found — initializing menu.");
 
-  // ====== MOBILE MENU FUNCTIONALITY ======
-  hamburger.addEventListener("click", () => {
-    console.log("☰ clicked!");
-    mobileMenu.classList.toggle("active");
-  });
+  // ---- OPEN / CLOSE
+  const openMenu = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();  // don't let other listeners immediately close it
+    mobileMenu.classList.add("active");
+    document.documentElement.classList.add("menu-open");
+    console.log("☰ opened");
+  };
 
-  closeButton?.addEventListener("click", () => {
+  const closeMenu = (e) => {
+    e?.stopPropagation();
     mobileMenu.classList.remove("active");
-  });
+    document.documentElement.classList.remove("menu-open");
+    console.log("☰ closed");
+  };
 
-  // Close menu when clicking outside
+  const toggleMenu = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    mobileMenu.classList.toggle("active");
+    document.documentElement.classList.toggle("menu-open", mobileMenu.classList.contains("active"));
+    console.log("☰ toggled:", mobileMenu.classList.contains("active"));
+  };
+
+  // Hamburger / close
+  hamburger.addEventListener("click", toggleMenu, true);
+  closeButton?.addEventListener("click", closeMenu, true);
+
+  // Outside click to close
   document.addEventListener("click", (event) => {
-    if (
-      mobileMenu.classList.contains("active") &&
-      !mobileMenu.contains(event.target) &&
-      !hamburger.contains(event.target)
-    ) {
-      mobileMenu.classList.remove("active");
+    const inMenu = event.target.closest("#mobile-menu");
+    const isBurger = event.target.closest(".hamburger");
+    if (!isBurger && !inMenu && mobileMenu.classList.contains("active")) {
+      closeMenu(event);
     }
-  });
+  }, true);
 
-  // Toggle submenus in mobile menu
+  // Dropdowns
   dropdownButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -44,12 +59,11 @@ function initHeader() {
     });
   });
 
-  // ====== MOVE HEADER OUTSIDE SITEWRAPPER ======
+  // Move header outside siteWrapper (safe even if already moved)
   const moveHeader = () => {
     const mtnHeader = document.querySelector(".mtn-header");
     const siteWrapper = document.getElementById("siteWrapper");
-    const body = document.querySelector("body");
-
+    const body = document.body;
     if (mtnHeader && siteWrapper && body) {
       body.insertBefore(mtnHeader, siteWrapper);
       console.log("Moved .mtn-header outside #siteWrapper");
@@ -57,8 +71,8 @@ function initHeader() {
       setTimeout(moveHeader, 100);
     }
   };
-
   moveHeader();
+
   console.log("✅ Mobile header fully initialized");
 }
 
