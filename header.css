@@ -8,6 +8,7 @@
   left: 0; /* Removed calc, makes sure it fills the screen */
   top: 0; /* Sticks to the top */
   box-sizing: border-box;
+  padding-bottom: 8px; /* 👈 Added subtle breathing room */
 }
 
 
