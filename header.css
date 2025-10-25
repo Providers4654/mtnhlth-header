@@ -10,14 +10,6 @@
   box-sizing: border-box;
 }
 
-.mtn-header::after {
-  content: "";
-  display: block;
-  height: 2px;
-  background: #333;
-  width: 100%;
-  margin-top: 8px;
-}
 
 .header-inner {
   display: flex;
