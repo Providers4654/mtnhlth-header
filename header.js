@@ -4,6 +4,7 @@ function initHeader() {
   const closeButton = document.querySelector(".close-menu");
   const dropdownButtons = document.querySelectorAll("#mobile-menu button");
 
+  // --- wait for DOM ---
   if (!hamburger || !mobileMenu) {
     console.log("⏳ Waiting for header elements...");
     setTimeout(initHeader, 200);
@@ -12,19 +13,21 @@ function initHeader() {
 
   console.log("✅ Header elements found — initializing menu.");
 
-  // ---- OPEN / CLOSE
+  // ===== MENU OPEN / CLOSE =====
+  const htmlEl = document.documentElement;
+
   const openMenu = (e) => {
     e?.preventDefault();
-    e?.stopPropagation();  // don't let other listeners immediately close it
+    e?.stopPropagation();
     mobileMenu.classList.add("active");
-    document.documentElement.classList.add("menu-open");
+    htmlEl.classList.add("menu-open");
     console.log("☰ opened");
   };
 
   const closeMenu = (e) => {
     e?.stopPropagation();
     mobileMenu.classList.remove("active");
-    document.documentElement.classList.remove("menu-open");
+    htmlEl.classList.remove("menu-open");
     console.log("☰ closed");
   };
 
@@ -32,15 +35,15 @@ function initHeader() {
     e?.preventDefault();
     e?.stopPropagation();
     mobileMenu.classList.toggle("active");
-    document.documentElement.classList.toggle("menu-open", mobileMenu.classList.contains("active"));
+    htmlEl.classList.toggle("menu-open", mobileMenu.classList.contains("active"));
     console.log("☰ toggled:", mobileMenu.classList.contains("active"));
   };
 
-  // Hamburger / close
+  // ---- listeners ----
   hamburger.addEventListener("click", toggleMenu, true);
   closeButton?.addEventListener("click", closeMenu, true);
 
-  // Outside click to close
+  // ---- close on outside click ----
   document.addEventListener("click", (event) => {
     const inMenu = event.target.closest("#mobile-menu");
     const isBurger = event.target.closest(".hamburger");
@@ -49,7 +52,7 @@ function initHeader() {
     }
   }, true);
 
-  // Dropdowns
+  // ===== DROPDOWN HANDLING =====
   dropdownButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -59,21 +62,35 @@ function initHeader() {
     });
   });
 
-  // Move header outside siteWrapper (safe even if already moved)
+  // ===== MOVE HEADER ABOVE SITEWRAPPER =====
   const moveHeader = () => {
     const mtnHeader = document.querySelector(".mtn-header");
     const siteWrapper = document.getElementById("siteWrapper");
     const body = document.body;
-    if (mtnHeader && siteWrapper && body) {
+
+    if (mtnHeader && siteWrapper && body && !body.contains(mtnHeader.previousSibling)) {
       body.insertBefore(mtnHeader, siteWrapper);
       console.log("Moved .mtn-header outside #siteWrapper");
-    } else {
+    } else if (!mtnHeader || !siteWrapper) {
       setTimeout(moveHeader, 100);
     }
   };
   moveHeader();
 
-  console.log("✅ Mobile header fully initialized");
+  // ===== ADJUST PAGE OFFSET =====
+  const applyOffset = () => {
+    const header = document.querySelector(".mtn-header");
+    const wrapper = document.getElementById("siteWrapper") || document.querySelector("#page, main, .Site");
+    if (header && wrapper) {
+      const height = header.offsetHeight;
+      wrapper.style.paddingTop = height + "px";
+      console.log(`🧱 Applied header offset: ${height}px`);
+    }
+  };
+  applyOffset();
+  window.addEventListener("resize", () => requestAnimationFrame(applyOffset));
+
+  console.log("✅ MTN HLTH header initialized successfully.");
 }
 
 initHeader();
