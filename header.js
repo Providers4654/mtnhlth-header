@@ -90,6 +90,29 @@ function initHeader() {
   applyOffset();
   window.addEventListener("resize", () => requestAnimationFrame(applyOffset));
 
+  // ===== HIDE HEADER ON SCROLL (MOBILE FOCUS) =====
+  let lastScroll = 0;
+  const header = document.querySelector(".mtn-header");
+  const hideOnScroll = () => {
+    const currentScroll = window.pageYOffset;
+    const isMobile = window.innerWidth < 769;
+
+    if (!isMobile) return; // Only apply on mobile
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // Scrolling down → hide header
+      header.classList.add("hide");
+    } else {
+      // Scrolling up → show header
+      header.classList.remove("hide");
+    }
+
+    lastScroll = currentScroll;
+  };
+
+  window.addEventListener("scroll", hideOnScroll);
+  console.log("📱 Mobile header scroll-hide behavior active.");
+
   console.log("✅ MTN HLTH header initialized successfully.");
 }
 
