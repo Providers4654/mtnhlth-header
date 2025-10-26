@@ -518,3 +518,17 @@
 }
 
 
+
+
+
+/* === Hide-on-scroll animation === */
+.mtn-header {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mtn-header.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
