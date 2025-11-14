@@ -1,534 +1,175 @@
+/* ===========================
+   1. MTN HEADER
+   =========================== */
 
+.mtn-header { position: fixed; z-index: 999999; width: 100vw; background: #1a1a1a; left: 0; top: 0; box-sizing: border-box; padding-bottom: 8px; }
 
-.mtn-header {
-  position: fixed;  /* This ensures the header sticks to the top */
-  z-index: 999999;
-  width: 100vw;
-  background: #1a1a1a;
-  left: 0; /* Removed calc, makes sure it fills the screen */
-  top: 0; /* Sticks to the top */
-  box-sizing: border-box;
-  padding-bottom: 8px; /* 👈 Added subtle breathing room */
-}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; height: 100px; padding: 0; box-sizing: border-box; }
 
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  height: 100px;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.header-left, .header-right {
-  display: flex;
-  align-items: center;
-}
+.header-left, .header-right { display: flex; align-items: center; }
 
 .logo img { height: 115px; object-fit: contain; }
 
-.header-center {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px 0;
-  align-items: center;
-}
+.header-center { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0; align-items: center; }
 
-.top-links {
-  display: flex;
-  justify-content: flex-end;
-  gap: 24px;
-  font-size: 14px;
-  margin: 6px 0;
-}
+.top-links { display: flex; justify-content: flex-end; gap: 24px; font-size: 14px; margin: 6px 0; }
 
-.top-links a {
-  color: #ccc;
-  text-decoration: none;
-}
+.top-links a { color: #ccc; text-decoration: none; }
 
 .top-links a:hover { color: #fff; }
 
+.short-divider { width: 100%; border: none; height: 2px; background-color: #333; margin-top: 4px; margin-bottom: 8px; }
 
+.nav-links { display: flex; justify-content: center; gap: 32px; }
 
-.short-divider {
-  width: 100%;
-  border: none;
-  height: 2px;
-  background-color: #333;
-  
-  /* Adjust margins to center the divider between sections */
-  margin-top: 4px;    /* Less space above */
-  margin-bottom: 8px; /* More space below */
-}
+.nav-links a { color: #fff; text-decoration: none; font-size: 16px; }
 
+.cta-button { background: #932c3c; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; white-space: nowrap; }
 
+.hamburger { font-size: 28px; cursor: pointer; background: none; border: none; color: #fff; padding: 8px; display: none; z-index: 1000; }
 
+/* ===========================
+   2. MOBILE MENU
+   =========================== */
 
+.mobile-menu { position: fixed; top: 0; right: 0; width: 80%; height: 100vh; background: #000; color: #fff; transform: translateX(100%); transition: transform 0.3s ease-in-out; z-index: 99999999; display: flex; flex-direction: column; overflow-y: auto; box-sizing: border-box; padding-top: 80px; opacity: 0; visibility: hidden; }
 
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-}
+.mobile-menu.active { transform: translateX(0); opacity: 1; visibility: visible; }
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-}
+.mobile-menu-header { background: #000; padding: 10px 16px; display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid #333; position: relative; top: 0; z-index: 10000; padding-top: 80px; }
 
-.cta-button {
-  background: #932c3c;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-}
+.mobile-logo img { height: 130px; max-width: 280px; display: block; }
 
-.hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #fff;
-  padding: 8px;
-  display: none;
-  z-index: 1000;
-}
+.close-menu { font-size: 28px; color: #fff; cursor: pointer; position: absolute; top: 12px; right: 16px; }
 
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;                            /* Keep it anchored to the right */
-  width: 80%;
-  height: 100vh;
-  background: #000;
-  color: #fff;
-  transform: translateX(100%);         /* Hide it off-screen to the right */
-  transition: transform 0.3s ease-in-out;
-  z-index: 99999999;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  box-sizing: border-box;
-  padding-top: 80px;
-  opacity: 0;                          /* Optional fade effect */
-  visibility: hidden;                  /* Optional fade effect */
-}
+.mobile-menu-inner { padding: 4px 16px !important; display: flex !important; flex-direction: column !important; gap: 0px !important; margin-top: -100px; padding-top: 100px; }
 
-.mobile-menu.active {
-  transform: translateX(0);            /* Slide it into view */
-  opacity: 1;
-  visibility: visible;
-}
+/* ===========================
+   3. MOBILE DROPDOWNS
+   =========================== */
 
+#mobile-products.dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 
+#mobile-products.dropdown-content.show { max-height: 1000px; overflow: visible; }
 
+/* Additional Therapies Info Blocks */
 
+.therapy-group { padding: 10px 16px 0; margin-top: 5px; }
 
-.mobile-menu-header {
-  background: #000;
-  padding: 10px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: 1px solid #333;
-  position: relative; /* NOT sticky */
-  top: 0;
-  z-index: 10000;
-  padding-top: 80px; /* 👈 Add some space above the logo */
-}
+.therapy-title { font-size: 14px; font-weight: 600; color: #ddd; text-transform: none; letter-spacing: 0.4px; margin: 16px 0 6px; padding-bottom: 6px; border-bottom: 1px solid #444; font-style: italic; }
 
-.mobile-logo img {
-  height: 130px;  
-  max-width: 280px; 
-  display: block;
-}
+.therapy-note { font-size: 12px; color: #aaa; line-height: 1.4; padding-top: 2px; }
 
-.close-menu {
-  font-size: 28px;
-  color: #fff;
-  cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 16px;
-}
-
-
-.mobile-menu-inner {
-  padding: 4px 16px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0px !important;
-  margin-top: -100px; /* 👈 Pull the content up UNDER the logo */
-  padding-top: 100px;  /* 👈 Push down content so it's not clipped */
-}
-
-
-
-
-
-
-/* Show/hide Solutions section */
-#mobile-products.dropdown-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-#mobile-products.dropdown-content.show {
-  max-height: 1000px;
-  overflow: visible;
-}
-
-
-
-
-
-
-/* === Additional Therapies Info Blocks === */
-.therapy-group {
-  padding: 10px 16px 0;
-  margin-top: 5px;
-}
-
-.therapy-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #ddd;
-  text-transform: none;
-  letter-spacing: 0.4px;
-  margin: 16px 0 6px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #444;
-  font-style: italic;
-}
-
-
-.therapy-note {
-  font-size: 12px;
-  color: #aaa;
-  line-height: 1.4;
-  padding-top: 2px;
-}
-
-
-
-
-
-
-/* Mobile dropdowns */
-.dropdown-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  opacity: 1;
-}
+.dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; display: flex; flex-direction: column; opacity: 1; }
 
 .dropdown-content.show { max-height: 500px; }
 
-.dropdown-content a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 8px 0; /* Increased spacing */
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
+.dropdown-content a { color: #ccc; text-decoration: none; font-size: 14px; padding: 8px 0; transition: color 0.3s ease, background-color 0.3s ease; }
 
-.dropdown-content a:hover {
-  color: #fff;
-  background: #333;
-}
+.dropdown-content a:hover { color: #fff; background: #333; }
 
+.dropdown-content .no-link { display: block; color: #ccc; padding: 8px 10px; font-size: 14px; font-family: inherit; line-height: 1.4; pointer-events: none; cursor: default; white-space: normal; }
 
+#desktop-products.dropdown-content { max-height: 80vh; overflow-y: auto; overflow-x: hidden; }
 
-/* === Style for non-clickable dropdown items in Solutions menu === */
-.dropdown-content .no-link {
-  display: block;
-  color: #ccc;
-  padding: 8px 10px;
-  font-size: 14px;
-  font-family: inherit;
-  line-height: 1.4;
-  pointer-events: none;
-  cursor: default;
-  white-space: normal;
-}
+.dropdown-content .dropdown-label { font-size: 15px; color: #eee; text-transform: uppercase; font-weight: 700; padding: 10px 16px 4px; letter-spacing: 0.7px; margin-top: 10px; margin-bottom: 6px; display: block; pointer-events: none; border-bottom: 1px solid #2a2a2a; }
 
-/* === Allow Solutions dropdown to scroll if too tall === */
-#desktop-products.dropdown-content {
-  max-height: 80vh;       /* Use up to 80% of viewport height */
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+.dropdown-content a { padding-left: 16px; padding-right: 16px; }
 
+.mobile-menu-inner button, .mobile-menu-inner a.main-link { background: none; border: none; color: #fff; font-size: 16px; text-align: left; padding: 6px 0; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: flex-start; height: 60px; }
 
+.mobile-menu-inner button:hover, .mobile-menu-inner a:hover { text-decoration: none; }
 
+.mobile-footer-links { display: flex; flex-direction: column; gap: 15px; font-size: 16px; color: #aaa; margin-top: 20px; }
 
+/* ===========================
+   4. MOBILE CTA BUTTON
+   =========================== */
 
-/* Group labels inside dropdowns (like Peptides / Supportive Therapies) */
-.dropdown-content .dropdown-label {
-  font-size: 15px;                 /* Larger text for visibility */
-  color: #eee;                     /* Brighter color for contrast */
-  text-transform: uppercase;
-  font-weight: 700;                /* Bolder */
-  padding: 10px 16px 4px;          /* More breathing room */
-  letter-spacing: 0.7px;           /* Wider letter spacing */
-  margin-top: 10px;
-  margin-bottom: 6px;
-  display: block;
-  pointer-events: none;            /* Still ensures it's not clickable */
-  border-bottom: 1px solid #2a2a2a;
-}
-
-
-/* Indent the links under group labels for visual hierarchy */
-.dropdown-content a {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-
-
-.mobile-menu-inner button,
-.mobile-menu-inner a.main-link {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  text-align: left;
-  padding: 6px 0;
-  cursor: pointer;
-  width: 100%;
-
-  display: flex;
-  align-items: center; /* Changed from flex-start to center for vertical alignment */
-  justify-content: flex-start; /* Keeps text left-aligned */
-  height: 60px; /* Optional: adjust for taller button box */
-}
-
-
-.mobile-menu-inner button:hover, 
-.mobile-menu-inner a:hover {
-  text-decoration: none;
-}
-
-.mobile-footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Increased gap between links */
-  font-size: 16px;
-  color: #aaa;
-  margin-top: 20px;
-}
-
-
-
-/* Special version for Book Your First Visit on mobile */
 @media (max-width: 768px) {
-  .cta-button.mobile-cta.book-visit {
-    background: #222; /* charcoal black */
-    color: #fff !important;
-    font-weight: 700;
-    border-radius: 8px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 12px;
-    margin-bottom: 16px; /* 👈 adds spacing below */
-    border: 1px solid #932c3c; /* subtle border tie-in */
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .cta-button.mobile-cta.book-visit:hover {
-    background: #333;
-    transform: translateY(-2px);
-  }
+  .cta-button.mobile-cta.book-visit { background: #222; color: #fff !important; font-weight: 700; border-radius: 8px; display: block; width: 100%; text-align: center; margin-top: 12px; margin-bottom: 16px; border: 1px solid #932c3c; transition: background 0.3s ease, transform 0.2s ease; }
+  .cta-button.mobile-cta.book-visit:hover { background: #333; transform: translateY(-2px); }
 }
 
+.menu-image { width: 100%; border-radius: 12px; margin-top: 25px; }
 
+/* ===========================
+   5. DESKTOP DROPDOWNS
+   =========================== */
 
-
-.menu-image {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 25px;
-}
-
-/* Desktop dropdown */
 @media (min-width: 769px) {
   .dropdown { position: relative; }
-
-  .dropdown-content {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #111;
-    padding: 10px;
-    display: none;
-    opacity: 1;
-    width: 400px;
-    white-space: normal;
-    overflow: visible;
-    max-height: none;
-    flex-direction: column;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    border: 1px solid #333;
-  }
-
-  .dropdown-content a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 14px;
-    padding: 8px 10px;
-    display: block;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .dropdown-content a:hover {
-    color: #fff;
-    background: #333;
-  }
-
+  .dropdown-content { position: absolute; top: 100%; left: 0; background: #111; padding: 10px; display: none; opacity: 1; width: 400px; white-space: normal; overflow: visible; max-height: none; flex-direction: column; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); border: 1px solid #333; }
+  .dropdown-content a { color: #ccc; text-decoration: none; font-size: 14px; padding: 8px 10px; display: block; border-radius: 8px; transition: background-color 0.3s ease, color 0.3s ease; }
+  .dropdown-content a:hover { color: #fff; background: #333; }
   .dropdown:hover .dropdown-content { display: block; }
 }
 
-.start-here-block {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-}
+/* ===========================
+   6. START HERE BLOCK
+   =========================== */
 
-.start-here-block .main-link {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
+.start-here-block { margin-top: 20px; margin-bottom: 20px; text-align: center; }
 
-.start-here-block .cta-button {
-  display: inline-block;
-  margin-top: 0;
-}
+.start-here-block .main-link { display: block; margin-bottom: 10px; font-weight: 500; }
 
+.start-here-block .cta-button { display: inline-block; margin-top: 0; }
 
+/* ===========================
+   7. RESPONSIVE ADJUSTMENTS
+   =========================== */
 
-
-
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .desktop-only { display: none !important; }
-  .hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 24px;
-    right: 24px;
-  }
-  .header-inner {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-/* === Main Site Logo (Header) === */
-.logo img {
-  height: 105px;
-  max-width: 80vw;
-  width: auto;
-  display: block;
-}
+  .hamburger { display: flex; align-items: center; justify-content: center; position: absolute; top: 24px; right: 24px; }
+  .header-inner { flex-direction: column; align-items: center; justify-content: center; }
+  .logo img { height: 105px; max-width: 80vw; width: auto; display: block; }
 }
 
-
-  /* Reduce space between Services + Products buttons */
-  .mobile-menu-inner button {
-    margin-bottom: 4px; /* Reduce space below each section button */
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
+.mobile-menu-inner button { margin-bottom: 4px; padding-top: 8px; padding-bottom: 8px; }
 
 @media (min-width: 769px) {
   .mobile-only { display: none !important; }
   .header-inner { padding-left: 40px; padding-right: 40px; }
 }
 
-.main-link {
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 8px;
-}
+.main-link { font-size: 16px; color: #fff; text-decoration: none; margin-bottom: 8px; }
 
-.mobile-divider {
-  margin: 4px 0;
-  border-top: 1px solid #444;
-}
+.mobile-divider { margin: 4px 0; border-top: 1px solid #444; }
 
-.cta-button.mobile-cta {
-  margin-top: 4px;
-  padding: 10px;
-  font-size: 16px;
-  width: 100%;
-  text-align: center;
-  background: #932c3c;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
+.cta-button.mobile-cta { margin-top: 4px; padding: 10px; font-size: 16px; width: 100%; text-align: center; background: #932c3c; border-radius: 8px; text-decoration: none; font-weight: bold; }
 
-/* Membership & Pricing link */
-.compare-link {
-  font-weight: 600;
-  color: #2f855a;
-  display: block;
-  font-size: 15px;
-  transition: color 0.3s ease;
-  margin-top: 6px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.1); /* desktop line */
-}
+.compare-link { font-weight: 600; color: #2f855a; display: block; font-size: 15px; transition: color 0.3s ease; margin-top: 6px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
 
-.compare-link:hover {
-  color: #38a169;
-  background: rgba(47,133,90,0.15);
-  border-radius: 6px;
-  padding-left: 12px;
-}
+.compare-link:hover { color: #38a169; background: rgba(47,133,90,0.15); border-radius: 6px; padding-left: 12px; }
 
-/* Mobile tweak: remove line, just add spacing */
-@media (max-width: 768px) {
-  #mobile-services .compare-link {
-    border-top: none;      /* no line */
-    margin-top: 14px;      /* extra space above */
-    padding-top: 6px;      /* gentle breathing room */
-  }
-}
+@media (max-width: 768px) { #mobile-services .compare-link { border-top: none; margin-top: 14px; padding-top: 6px; } }
+
+/* ===========================
+   8. HIDE ON SCROLL
+   =========================== */
+
+.mtn-header { transition: transform 0.3s ease, opacity 0.3s ease; }
+
+.mtn-header.hide { transform: translateY(-100%); opacity: 0; }
 
 
 
 
 
-/* === Hide-on-scroll animation === */
-.mtn-header {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.mtn-header.hide {
-  transform: translateY(-100%);
-  opacity: 0;
-}
 
 
+
+
+/* ===========================
+   9. CTA STACK (DESKTOP ONLY)
+   =========================== */
+
+/* A. Stack CTA buttons vertically (desktop) */
+@media (min-width:769px){.header-right.desktop-only{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}}
+
+/* B. Secondary CTA button styling (Book Your First Visit) */
+@media (min-width:769px){.secondary-cta{background:#222;color:#fff!important;border:1px solid #932c3c;font-weight:600;padding:10px 18px;border-radius:8px;text-align:center;transition:background .3s ease,transform .2s ease;}}
+
+/* C. Secondary CTA hover effect */
+@media (min-width:769px){.secondary-cta:hover{background:#333;transform:translateY(-2px);}}
