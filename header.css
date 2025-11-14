@@ -183,3 +183,161 @@
 
 
 
+
+
+
+
+/* ===========================
+   CTA BUTTONS — UNIFORM SIZE
+   =========================== */
+
+/* A. Same width + height for BOTH CTAs */
+@media (min-width:769px){
+  .header-right.desktop-only .cta-button,
+  .header-right.desktop-only .secondary-cta{
+    display:block;
+    min-width:220px;
+    min-height:52px;
+    padding:0 20px;
+    line-height:52px;
+    font-size:16px;
+    font-weight:600;
+    border-radius:8px;
+    text-align:center;
+    box-sizing:border-box;
+  }
+}
+
+/* B. Free Consultation (primary CTA) */
+@media (min-width:769px){
+  .header-right.desktop-only .cta-button{
+    background:#932c3c!important;
+    color:#fff!important;
+    border:none!important;
+  }
+}
+
+/* C. Book Your First Visit (secondary CTA) */
+@media (min-width:769px){
+  .header-right.desktop-only .secondary-cta{
+    background:#222!important;
+    color:#fff!important;
+    border:1px solid #932c3c!important;
+  }
+}
+
+/* D. Hover */
+@media (min-width:769px){
+  .header-right.desktop-only .secondary-cta:hover{
+    background:#333!important;
+    transform:translateY(-2px);
+  }
+}
+
+
+/* ===========================
+   TOP LINKS — SPACING + CENTER
+   =========================== */
+
+@media (min-width:769px){
+  .top-links{
+    justify-content:center!important;
+    gap:40px!important;
+    margin-top:6px!important;
+    margin-bottom:6px!important;
+  }
+
+  .short-divider{
+    margin:8px 0!important;
+  }
+}
+
+
+/* ===========================
+   CTA GROUP — VERTICAL ALIGN
+   =========================== */
+
+/* Center CTA buttons vertically inside the header */
+@media (min-width:769px){
+  .header-inner{
+    align-items:center!important;
+  }
+}
+
+
+/* ===========================
+   MIDDLE HEADER VISUAL ENHANCEMENTS
+   =========================== */
+
+/* A. Increase top link + nav link font size/weight */
+@media (min-width:769px){.top-links a{font-size:16px!important;font-weight:500!important;}.nav-links a{font-size:18px!important;font-weight:600!important;}}
+
+/* B. Thicker horizontal divider */
+@media (min-width:769px){.short-divider{height:3px!important;background-color:#444!important;}}
+
+
+
+/* ===========================
+   DROPDOWN TEXT SIZE FIX
+   =========================== */
+
+/* A. Reset dropdown link size + weight */
+@media (min-width:769px){
+  .dropdown-content a{
+    font-size:15px!important;
+    font-weight:400!important;
+  }
+}
+
+/* B. Reset dropdown label size */
+@media (min-width:769px){
+  .dropdown-content .dropdown-label{
+    font-size:14px!important;
+    font-weight:600!important;
+  }
+}
+
+/* C. Reset therapy titles + notes so they aren't huge */
+@media (min-width:769px){
+  .therapy-title{
+    font-size:14px!important;
+    font-weight:600!important;
+  }
+  .therapy-note{
+    font-size:12px!important;
+    font-weight:400!important;
+  }
+}
+
+
+/* ===========================
+   14. MEMBERSHIP CTA INSIDE DROPDOWN
+   =========================== */
+
+/* A. Make “Membership & Pricing” a full-width CTA button */
+@media (min-width:769px){
+  #desktop-services .compare-link{
+    display:block!important;
+    background:#222!important;
+    color:#fff!important;
+    border:1px solid #932c3c!important;
+    border-radius:8px!important;
+    padding:14px 20px!important;
+    font-size:16px!important;
+    font-weight:600!important;
+    text-align:center!important;
+    margin-top:14px!important;
+    margin-bottom:6px!important;
+    transition:background .3s ease, transform .2s ease;
+  }
+
+  /* B. Hover effect (match secondary CTA) */
+  #desktop-services .compare-link:hover{
+    background:#333!important;
+    transform:translateY(-2px);
+  }
+}
+
+
+
+
