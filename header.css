@@ -2,31 +2,46 @@
    1. MTN HEADER
    =========================== */
 
-.mtn-header { position: fixed; z-index: 999999; width: 100vw; background: #1a1a1a; left: 0; top: 0; box-sizing: border-box; padding-bottom: 8px; }
+/* A. Header container + extra vertical padding for CTA space */
+.mtn-header{position:fixed;z-index:999999;width:100vw;background:#1a1a1a;left:0;top:0;box-sizing:border-box;padding-top:12px;padding-bottom:20px;transition:transform .3s ease,opacity .3s ease;}
 
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; height: 100px; padding: 0; box-sizing: border-box; }
+/* B. Inner header layout + increased height for breathing room */
+.header-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;height:130px;padding:0;box-sizing:border-box;}
 
-.header-left, .header-right { display: flex; align-items: center; }
+/* C. Left + right column flex behavior */
+.header-left,.header-right{display:flex;align-items:center;}
 
-.logo img { height: 115px; object-fit: contain; }
+/* D. Main site logo */
+.logo img{height:115px;object-fit:contain;}
 
-.header-center { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0; align-items: center; }
+/* E. Center column (top links + nav) */
+.header-center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:10px 0;align-items:center;}
 
-.top-links { display: flex; justify-content: flex-end; gap: 24px; font-size: 14px; margin: 6px 0; }
+/* F. Top links row (centered + extra spacing between links) */
+.top-links{display:flex;justify-content:center;gap:40px;font-size:14px;margin:6px 0;}
 
-.top-links a { color: #ccc; text-decoration: none; }
+/* G. Top link styles */
+.top-links a{color:#ccc;text-decoration:none;}
+.top-links a:hover{color:#fff;}
 
-.top-links a:hover { color: #fff; }
+/* H. Divider between top links + nav row */
+.short-divider{width:100%;border:none;height:2px;background-color:#333;margin-top:4px;margin-bottom:8px;}
 
-.short-divider { width: 100%; border: none; height: 2px; background-color: #333; margin-top: 4px; margin-bottom: 8px; }
+/* I. Primary navigation row */
+.nav-links{display:flex;justify-content:center;gap:32px;}
 
-.nav-links { display: flex; justify-content: center; gap: 32px; }
+/* J. Primary nav links */
+.nav-links a{color:#fff;text-decoration:none;font-size:16px;}
 
-.nav-links a { color: #fff; text-decoration: none; font-size: 16px; }
+/* K. Default desktop CTA button style */
+.cta-button{background:#932c3c;color:#fff;padding:12px 20px;border-radius:8px;font-weight:500;text-decoration:none;white-space:nowrap;}
 
-.cta-button { background: #932c3c; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+/* L. Mobile menu toggle icon */
+.hamburger{font-size:28px;cursor:pointer;background:none;border:none;color:#fff;padding:8px;display:none;z-index:1000;}
 
-.hamburger { font-size: 28px; cursor: pointer; background: none; border: none; color: #fff; padding: 8px; display: none; z-index: 1000; }
+
+
+
 
 /* ===========================
    2. MOBILE MENU
@@ -155,55 +170,5 @@
 
 
 
-
-
-
-
-
-
-/* ===========================
-   9. CTA STACK (DESKTOP ONLY)
-   =========================== */
-
-/* A. Stack CTA buttons vertically (desktop) */
-@media (min-width:769px){.header-right.desktop-only{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}}
-
-/* B. Secondary CTA button styling (Book Your First Visit) */
-@media (min-width:769px){.secondary-cta{background:#222;color:#fff!important;border:1px solid #932c3c;font-weight:600;padding:10px 18px;border-radius:8px;text-align:center;transition:background .3s ease,transform .2s ease;}}
-
-/* C. Secondary CTA hover effect */
-@media (min-width:769px){.secondary-cta:hover{background:#333;transform:translateY(-2px);}}
-
-
-
-
-
-
-
-
-/* ===========================
-   10. TOP LINKS CENTER FIX
-   =========================== */
-
-/* A. Force the top links to center align on desktop */
-@media (min-width:769px){.top-links{justify-content:center!important;}}
-
-
-
-/* ===========================
-   11. CTA BUTTON UNIFORM SIZING
-   =========================== */
-
-/* A. Add top and bottom spacing for the CTA stack */
-@media (min-width:769px){.header-right.desktop-only{padding-top:20px;padding-bottom:20px;}}
-
-/* B. Force identical width + height for BOTH CTA buttons */
-@media (min-width:769px){.header-right.desktop-only .cta-button,.header-right.desktop-only .secondary-cta{display:block;min-width:220px;min-height:52px;padding:0 20px;line-height:52px;font-size:16px;font-weight:600;border-radius:8px;text-align:center;box-sizing:border-box;}}
-
-/* C. Secondary CTA visual styling */
-@media (min-width:769px){.header-right.desktop-only .secondary-cta{background:#222;color:#fff!important;border:1px solid #932c3c;}}
-
-/* D. Secondary CTA hover effect */
-@media (min-width:769px){.header-right.desktop-only .secondary-cta:hover{background:#333;transform:translateY(-2px);}}
 
 
