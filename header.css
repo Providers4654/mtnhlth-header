@@ -341,3 +341,212 @@
 
 
 
+
+
+
+
+/* ===========================
+   17. NUCLEAR FIX — FORCE HAMBURGER VISIBLE
+   =========================== */
+
+@media (max-width:960px){
+
+  /* Override every possible desktop rule */
+  .desktop-only,
+  .header-center.desktop-only,
+  .header-right.desktop-only,
+  .header-left.desktop-only {
+    display:none!important;
+  }
+
+  .mobile-only{
+    display:block!important;
+  }
+
+  /* Force hamburger visible even if a wrapper hides it */
+  .hamburger,
+  .header-inner .hamburger,
+  .mtn-header .hamburger,
+  .header-right .hamburger {
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    position:absolute!important;
+    top:22px!important;
+    right:22px!important;
+    font-size:34px!important;
+    color:#fff!important;
+    z-index:999999!important;
+  }
+
+  .header-inner{
+    flex-direction:column!important;
+    align-items:center!important;
+  }
+
+  .logo img{
+    height:100px!important;
+  }
+}
+
+
+
+
+
+
+/* ===========================
+   18. MOBILE MEMBERSHIP BUTTON
+   =========================== */
+
+/* A. Convert Membership & Pricing → into a CTA inside mobile menu */
+@media (max-width:960px){
+  .mobile-menu-inner .compare-link{
+    display:block!important;
+    width:100%!important;
+    background:#222!important;
+    color:#fff!important;
+    border:1px solid #932c3c!important;
+    border-radius:8px!important;
+    padding:14px 18px!important;
+    font-size:16px!important;
+    font-weight:600!important;
+    text-align:center!important;
+    margin-top:20px!important;
+    margin-bottom:10px!important;
+    box-sizing:border-box!important;
+    transition:background .3s ease, transform .2s ease;
+  }
+
+  /* B. Hover lift */
+  .mobile-menu-inner .compare-link:hover{
+    background:#333!important;
+    transform:translateY(-2px);
+  }
+}
+
+
+/* ===========================
+   13. UNIFY CTA BUTTON STYLE ACROSS ALL SIZES
+   =========================== */
+
+/* A. Match desktop CTA style even when mobile menu is active */
+@media (min-width:480px){
+
+  /* Free Consultation (primary CTA) */
+  .cta-button{
+    background:#932c3c!important;
+    color:#fff!important;
+    border:none!important;
+    min-width:220px!important;
+    min-height:52px!important;
+    line-height:52px!important;
+    border-radius:8px!important;
+    font-weight:600!important;
+    text-align:center!important;
+    display:block!important;
+  }
+
+  /* Book Your First Visit (secondary CTA) */
+  .secondary-cta{
+    background:#222!important;
+    color:#fff!important;
+    border:1px solid #932c3c!important;
+    min-width:220px!important;
+    min-height:52px!important;
+    line-height:52px!important;
+    border-radius:8px!important;
+    font-weight:600!important;
+    display:block!important;
+  }
+
+  /* Hover effect preserved */
+  .secondary-cta:hover{
+    background:#333!important;
+    transform:translateY(-2px);
+  }
+}
+
+
+/* ===========================
+   19. MOBILE BOOK VISIT = DESKTOP SECONDARY CTA
+   =========================== */
+
+/* Make "Book Your First Visit" match the gray desktop secondary CTA */
+@media (max-width:960px){
+  .cta-button.mobile-cta.book-visit{
+    background:#222!important;
+    color:#fff!important;
+    border:1px solid #932c3c!important;
+    font-weight:600!important;
+  }
+}
+
+
+
+/* MOBILE CTA BUTTONS – RESTORE ORIGINAL SLIM DESIGN */
+@media (max-width:960px){
+
+  /* Base mobile CTA */
+  .mobile-cta{
+    background:#932c3c !important;
+    color:#fff !important;
+    padding:14px 18px !important;
+    border-radius:8px !important;
+    font-size:16px !important;
+    font-weight:600 !important;
+    width:100% !important;
+    text-align:center !important;
+    margin:12px 0 !important;
+    line-height:1.3 !important;
+  }
+
+  /* Book Your First Visit mobile button (secondary style) */
+  .mobile-cta.book-visit{
+    background:#222 !important;
+    border:1px solid #932c3c !important;
+  }
+
+  .mobile-cta.book-visit:hover{
+    background:#333 !important;
+  }
+}
+
+
+/* ===========================
+   12. FIX MID-RANGE (TABLET/HALF SCREEN) HEADER HEIGHT
+   =========================== */
+
+/* A. Apply desktop-style compression to tablet/half-screen */
+@media (min-width:769px) and (max-width:1400px){
+
+  /* Keep logo from expanding when the header narrows */
+  .logo img{
+    height:110px!important;
+    width:auto!important;
+  }
+
+  /* Prevent top links from wrapping (this adds height!) */
+  .top-links{
+    white-space:nowrap!important;
+  }
+
+  /* Align header contents exactly like full desktop */
+  .header-inner{
+    align-items:center!important;
+  }
+
+  /* Prevent nav links from wrapping into taller rows */
+  .nav-links{
+    white-space:nowrap!important;
+  }
+
+  /* Keep CTA stack consistent; prevent mid-range stretching */
+  .header-right.desktop-only{
+    justify-content:center!important;
+  }
+}
+
+
+
+
+
