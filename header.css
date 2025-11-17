@@ -101,7 +101,7 @@
   text-align: left;
 
   width: 100%;
-  padding: 14px 4px; /* matches accordion buttons */
+  padding: 14px 16px; /* FIX — matches Services & Solutions left indent */
   margin: 0;
 
   display: flex;
@@ -109,13 +109,22 @@
   justify-content: space-between;
 
   cursor: pointer;
-  height: auto; /* prevents forced tall rows */
+  height: auto;
 }
+
 
 
 .mobile-menu-inner button:hover, .mobile-menu-inner a:hover { text-decoration: none; }
 
-.mobile-footer-links { display: flex; flex-direction: column; gap: 15px; font-size: 16px; color: #aaa; margin-top: 20px; }
+.mobile-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Reduced spacing */
+  font-size: 16px;
+  color: #aaa;
+  margin-top: 12px; /* Slightly tighter */
+}
+
 
 /* Add padding to footer links */
 .mobile-footer-links {
