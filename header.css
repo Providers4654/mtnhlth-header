@@ -132,11 +132,13 @@
 }
 
 .mobile-footer-links a {
-  padding: 12px 4px !important;
+  padding: 6px 4px !important; /* FIX — reduce vertical spacing */
   color: #ddd !important;
   display: block !important;
   text-decoration: none !important;
+  line-height: 1.2 !important; /* EXTRA tightening */
 }
+
 
 
 /* ===========================
@@ -212,13 +214,14 @@
   text-align: left !important;
 
   width: 100% !important;
-  padding: 14px 4px !important;
+  padding: 14px 16px !important; /* FIX — match Services/Solutions indent */
   margin: 0 !important;
 
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
 }
+
 
 
 .mobile-divider { margin: 4px 0; border-top: 1px solid #444; }
