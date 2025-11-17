@@ -52,15 +52,24 @@ function initHeader() {
     }
   }, true);
 
-  // ===== DROPDOWN HANDLING =====
-  dropdownButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const targetId = button.getAttribute("data-target");
-      const targetContent = document.getElementById(targetId);
-      targetContent?.classList.toggle("show");
-    });
+
+  // PLUS/MINUS toggle update
+dropdownButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    const targetId = button.getAttribute("data-target");
+    const targetContent = document.getElementById(targetId);
+
+    // toggle show class
+    const open = targetContent.classList.toggle("show");
+
+    // update + / –
+    if (open) button.classList.add("open");
+    else button.classList.remove("open");
   });
+});
+
 
   // ===== MOVE HEADER ABOVE SITEWRAPPER =====
   const moveHeader = () => {
