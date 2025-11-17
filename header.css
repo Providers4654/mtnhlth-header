@@ -550,3 +550,79 @@
 
 
 
+/* ============================================
+   MOBILE MENU — FIXED BUTTON + ACCORDION STYLE
+   ============================================ */
+
+/* Make mobile buttons behave as accordion headers */
+#mobile-menu .mobile-menu-inner button[data-target] {
+  background: none !important;
+  border: none !important;
+  color: #fff !important;
+  font-size: 18px !important;
+  font-weight: 600;
+  width: 100%;
+  padding: 14px 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  /* REMOVE the forced 60px height */
+  height: auto !important;
+}
+
+/* Add the + icon automatically */
+#mobile-menu .mobile-menu-inner button[data-target]::after {
+  content: "+";
+  font-size: 22px;
+  line-height: 1;
+  margin-left: 8px;
+  transition: transform .2s ease, color .2s ease;
+  color: #fff;
+}
+
+/* When open → show minus */
+#mobile-menu .mobile-menu-inner button[data-target].open::after {
+  content: "–";
+  transform: rotate(0deg);
+  color: #fff;
+}
+
+/* The dropdown container (mobile-services, mobile-products) */
+#mobile-menu .dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: max-height .35s ease;
+  padding-left: 0 !important;
+}
+
+/* Visible state */
+#mobile-menu .dropdown-content.show {
+  max-height: 1000px; /* plenty of room */
+}
+
+/* Links inside dropdown retain style */
+#mobile-menu .dropdown-content a {
+  padding: 10px 0 !important;
+  font-size: 15px;
+}
+
+/* Make dropdown labels match spacing */
+#mobile-menu .dropdown-content .dropdown-label {
+  padding: 12px 0 6px !important;
+  margin-top: 10px;
+}
+
+/* Remove inherited spacing from earlier CSS */
+.mobile-menu-inner {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+
+
