@@ -91,7 +91,27 @@
 
 .dropdown-content a { padding-left: 16px; padding-right: 16px; }
 
-.mobile-menu-inner button, .mobile-menu-inner a.main-link { background: none; border: none; color: #fff; font-size: 16px; text-align: left; padding: 6px 0; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: flex-start; height: 60px; }
+.mobile-menu-inner button,
+.mobile-menu-inner a.main-link {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+
+  width: 100%;
+  padding: 14px 4px; /* matches accordion buttons */
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+  height: auto; /* prevents forced tall rows */
+}
+
 
 .mobile-menu-inner button:hover, .mobile-menu-inner a:hover { text-decoration: none; }
 
@@ -123,12 +143,24 @@
 /* ===========================
    6. START HERE BLOCK
    =========================== */
+.start-here-block {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 0 16px; /* ADDED — gives left/right breathing room */
+}
 
-.start-here-block { margin-top: 20px; margin-bottom: 20px; text-align: center; }
+.start-here-block .main-link {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
 
-.start-here-block .main-link { display: block; margin-bottom: 10px; font-weight: 500; }
+.start-here-block .cta-button {
+  display: inline-block;
+  margin-top: 0;
+}
 
-.start-here-block .cta-button { display: inline-block; margin-top: 0; }
 
 /* ===========================
    7. RESPONSIVE ADJUSTMENTS
