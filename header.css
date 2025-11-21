@@ -703,34 +703,6 @@
 
 
 
-/* FORCE DESKTOP HEADER FOR ALL TABLET + MID SIZES */
-@media (min-width: 601px) {
-  .desktop-only {
-    display: flex !important;
-  }
-  .mobile-only,
-  #mobile-menu {
-    display: none !important;
-  }
-  .hamburger {
-    display: none !important;
-  }
-}
-
-
-
-/* TRUE MOBILE BEHAVIOR ONLY BELOW 600px */
-@media (max-width: 600px) {
-  .desktop-only {
-    display: none !important;
-  }
-  .hamburger {
-    display: flex !important;
-  }
-  #mobile-menu {
-    display: block !important;
-  }
-}
 
 
 
