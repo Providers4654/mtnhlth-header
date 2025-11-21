@@ -714,8 +714,17 @@
 
 
 
+
+
+
+
+
+
+
+
 /* =========================================
    FIX: MOBILE MENU DROPDOWNS + UNIFORM HEADER SPACING
+   FIX: REMOVE LEFT INDENT (Services + Solutions)
    FOR TABLET / HALF DESKTOP (769–1199px)
    ========================================= */
 @media (min-width: 769px) and (max-width: 1199px) {
@@ -739,26 +748,25 @@
   }
 
   /* =========================================
-     KEY FIX: REMOVE EXTRA WRAPPER SPACING
-     (Services + Solutions had extra margin/padding)
+     REMOVE EXTRA WRAPPER SPACING
      ========================================= */
   #mobile-menu .therapy-group,
   #mobile-menu .category-wrapper,
-  #mobile-menu .dropdown-label {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Nuke any leftover padding on first-level wrappers */
+  #mobile-menu .dropdown-label,
   #mobile-menu .mobile-menu-inner > * {
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* --- Fix row spacing so ALL headers match evenly --- */
+  /* =========================================
+     THE REAL FIX: REMOVE LEFT INDENT
+     FROM HEADER BUTTONS THEMSELVES
+     ========================================= */
+
+  /* This is the padding causing the indent — override it */
   #mobile-menu .mobile-menu-inner button[data-target],
   #mobile-menu .mobile-menu-inner a[data-target] {
-    padding: 14px 16px !important;   /* perfectly matched spacing */
+    padding: 14px 0 !important;     /* ← NO LEFT/RIGHT PADDING */
     margin: 0 !important;
     height: auto !important;
     line-height: 1.3 !important;
@@ -767,10 +775,16 @@
     justify-content: space-between !important;
   }
 
-  /* Prevent leftover desktop padding */
-  #mobile-menu .dropdown {
-    padding: 0 !important;
-    margin: 0 !important;
+  /* Add balanced left/right spacing to visually center text */
+  #mobile-menu .mobile-menu-inner button[data-target] span,
+  #mobile-menu .mobile-menu-inner a[data-target] span {
+    padding-left: 16px !important;
+  }
+
+  /* Ensure "+" icon stays aligned right */
+  #mobile-menu .mobile-menu-inner button[data-target]::after,
+  #mobile-menu .mobile-menu-inner a[data-target]::after {
+    margin-right: 16px !important;
   }
 
   /* Clean divider spacing */
@@ -778,6 +792,7 @@
     margin: 4px 0 !important;
   }
 }
+
 
 
 
