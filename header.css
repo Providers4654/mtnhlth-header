@@ -707,3 +707,84 @@
 
 
 
+
+
+
+
+
+
+
+/* =========================================
+   FIX: MOBILE MENU DROPDOWNS + UNIFORM HEADER SPACING
+   FOR TABLET / HALF DESKTOP (769–1199px)
+   ========================================= */
+@media (min-width: 769px) and (max-width: 1199px) {
+
+  /* --- Fix dropdown panels not opening --- */
+  #mobile-menu .dropdown-content {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    padding-left: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #mobile-menu .dropdown-content.show {
+    max-height: 1000px !important;
+    display: flex !important;
+  }
+
+  /* =========================================
+     KEY FIX: REMOVE EXTRA WRAPPER SPACING
+     (Services + Solutions had extra margin/padding)
+     ========================================= */
+  #mobile-menu .therapy-group,
+  #mobile-menu .category-wrapper,
+  #mobile-menu .dropdown-label {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Nuke any leftover padding on first-level wrappers */
+  #mobile-menu .mobile-menu-inner > * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* --- Fix row spacing so ALL headers match evenly --- */
+  #mobile-menu .mobile-menu-inner button[data-target],
+  #mobile-menu .mobile-menu-inner a[data-target] {
+    padding: 14px 16px !important;   /* perfectly matched spacing */
+    margin: 0 !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* Prevent leftover desktop padding */
+  #mobile-menu .dropdown {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Clean divider spacing */
+  #mobile-menu .mobile-divider {
+    margin: 4px 0 !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
