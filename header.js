@@ -3,6 +3,34 @@ function initHeader() {
   const mobileMenu = document.getElementById("mobile-menu");
   const closeButton = document.querySelector(".close-menu");
 
+    // FIX: Re-bind dropdown listeners every time the mobile menu opens
+  function bindMobileDropdowns() {
+    const newButtons = document.querySelectorAll("#mobile-menu [data-target]");
+    newButtons.forEach((button) => {
+      if (button._bound) return; // prevents duplicate bindings
+
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const targetId = button.getAttribute("data-target");
+        const content = document.getElementById(targetId);
+        if (!content) return;
+
+        const open = content.classList.toggle("show");
+        button.classList.toggle("open", open);
+      });
+
+      button._bound = true;
+    });
+  }
+
+  // Run binding AFTER menu opens (the DOM loads late on tablet widths)
+  hamburger.addEventListener("click", () => {
+    setTimeout(bindMobileDropdowns, 50);
+  });
+
+
   // ❗ FIXED SELECTOR — supports <a> AND <button>
   const dropdownButtons = document.querySelectorAll(
     "#mobile-menu button[data-target], #mobile-menu a[data-target]"
