@@ -2,7 +2,11 @@ function initHeader() {
   const hamburger = document.querySelector(".hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
   const closeButton = document.querySelector(".close-menu");
-  const dropdownButtons = document.querySelectorAll("#mobile-menu button");
+
+  // ❗ FIXED SELECTOR — supports <a> AND <button>
+  const dropdownButtons = document.querySelectorAll(
+    "#mobile-menu button[data-target], #mobile-menu a[data-target]"
+  );
 
   // --- wait for DOM ---
   if (!hamburger || !mobileMenu) {
