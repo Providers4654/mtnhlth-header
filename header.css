@@ -418,6 +418,14 @@
   }
 }
 
+/* Extra spacing above Membership CTA only */
+@media (min-width:769px){
+  #desktop-services .compare-link{
+    margin-top:28px!important;
+  }
+}
+
+
 
 
 
