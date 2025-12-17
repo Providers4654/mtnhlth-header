@@ -827,6 +827,40 @@
 
 
 
+/* ===========================
+   FIX: FORCE DESKTOP DROPDOWN WIDTH + LAYOUT
+   (PREVENT TABLET RULE COLLISION)
+   =========================== */
+
+@media (min-width: 769px) {
+
+  /* Explicitly restore desktop dropdowns */
+  .nav-links .dropdown-content {
+    position: absolute !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 400px !important;
+    max-width: 400px !important;
+    min-width: 400px !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  /* Prevent character stacking */
+  .nav-links .dropdown-content a,
+  .nav-links .dropdown-content span {
+    writing-mode: horizontal-tb !important;
+    word-break: normal !important;
+    white-space: normal !important;
+  }
+}
+
+
+
+
+
+
 
 
 
