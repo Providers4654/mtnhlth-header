@@ -385,12 +385,17 @@
 
 
 /* ===========================
-   14. MEMBERSHIP CTA INSIDE DROPDOWN
+   14. MEMBERSHIP + SOLUTIONS CTA INSIDE DROPDOWN
    =========================== */
 
-/* A. Make “Membership & Pricing” a full-width CTA button */
+/* A. Make CTA buttons full-width on desktop */
 @media (min-width:769px){
-  #desktop-services .compare-link{
+
+  /* Membership & Pricing (Services) */
+  #desktop-services .compare-link,
+
+  /* View All Solutions (Solutions) */
+  #desktop-products .compare-link{
     display:block!important;
     background:#222!important;
     color:#fff!important;
@@ -402,15 +407,17 @@
     text-align:center!important;
     margin-top:14px!important;
     margin-bottom:6px!important;
-    transition:background .3s ease, transform .2s ease;
+    transition:background .3s ease,transform .2s ease;
   }
 
   /* B. Hover effect (match secondary CTA) */
-  #desktop-services .compare-link:hover{
+  #desktop-services .compare-link:hover,
+  #desktop-products .compare-link:hover{
     background:#333!important;
     transform:translateY(-2px);
   }
 }
+
 
 
 
