@@ -415,6 +415,35 @@
 
 
 
+/* ===========================
+   15. SOLUTIONS CTA INSIDE DROPDOWN
+   =========================== */
+
+@media (min-width:769px){
+  #desktop-products .compare-link{
+    display:block!important;
+    background:#222!important;
+    color:#fff!important;
+    border:1px solid #932c3c!important;
+    border-radius:8px!important;
+    padding:14px 20px!important;
+    font-size:16px!important;
+    font-weight:600!important;
+    text-align:center!important;
+    margin-top:14px!important;
+    margin-bottom:6px!important;
+    transition:background .3s ease,transform .2s ease;
+  }
+
+  #desktop-products .compare-link:hover{
+    background:#333!important;
+    transform:translateY(-2px);
+  }
+}
+
+
+
+
 
 
 
