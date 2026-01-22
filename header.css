@@ -28,7 +28,13 @@
 .short-divider{width:100%;border:none;height:2px;background-color:#333;margin-top:4px;margin-bottom:8px;}
 
 /* I. Primary navigation row */
-.nav-links{display:flex;justify-content:center;gap:32px;}
+.nav-links{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  margin-top:6px; /* matches top-links breathing room */
+}
+
 
 /* J. Primary nav links */
 .nav-links a{color:#fff;text-decoration:none;font-size:16px;}
@@ -169,14 +175,18 @@
 /* Apply identical height + vertical rhythm to buttons AND links */
 #mobile-menu .mobile-menu-inner button[data-target],
 #mobile-menu .mobile-menu-inner a.main-link {
-  min-height: 56px !important;
+  height: 56px !important;          /* FORCE exact equality */
   padding: 0 16px !important;
+  margin: 0 !important;
+
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  line-height: 1.2 !important;
+
+  line-height: 1 !important;
   box-sizing: border-box !important;
 }
+
 
 
 
@@ -227,7 +237,6 @@
   .logo img { height: 105px; max-width: 80vw; width: auto; display: block; }
 }
 
-.mobile-menu-inner button { margin-bottom: 4px; padding-top: 8px; padding-bottom: 8px; }
 
 @media (min-width: 769px) {
   .mobile-only { display: none !important; }
@@ -682,17 +691,14 @@
   font-size: 18px !important;
   font-weight: 600;
   width: 100%;
-  padding: 14px 0 !important;
   margin: 0 !important;
-
   display: flex !important;
+
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-
-  /* REMOVE the forced 60px height */
-  height: auto !important;
 }
+
 
 /* Add the + icon automatically — CENTERED, NO HEIGHT INFLUENCE */
 #mobile-menu .mobile-menu-inner button[data-target]::after {
