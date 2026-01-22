@@ -119,11 +119,13 @@
 .mobile-footer-links {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Reduced spacing */
+  gap: 8px;
   font-size: 16px;
   color: #aaa;
-  margin-top: 12px; /* Slightly tighter */
+  margin-top: 12px;
+  margin-bottom: 28px; /* ADDED */
 }
+
 
 
 /* Add padding to footer links */
@@ -150,7 +152,35 @@
   .cta-button.mobile-cta.book-visit:hover { background: #333; transform: translateY(-2px); }
 }
 
-.menu-image { width: 100%; border-radius: 12px; margin-top: 25px; }
+.menu-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 32px; /* INCREASED */
+}
+
+
+
+
+
+/* ===========================
+   4.1 MOBILE NAV — UNIFORM ROW HEIGHT
+   =========================== */
+
+/* Apply identical height + vertical rhythm to buttons AND links */
+#mobile-menu .mobile-menu-inner button[data-target],
+#mobile-menu .mobile-menu-inner a.main-link {
+  min-height: 56px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  line-height: 1.2 !important;
+  box-sizing: border-box !important;
+}
+
+
+
+
 
 /* ===========================
    5. DESKTOP DROPDOWNS
@@ -664,15 +694,18 @@
   height: auto !important;
 }
 
-/* Add the + icon automatically */
+/* Add the + icon automatically — CENTERED, NO HEIGHT INFLUENCE */
 #mobile-menu .mobile-menu-inner button[data-target]::after {
   content: "+";
   font-size: 22px;
   line-height: 1;
-  margin-left: 8px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
   transition: transform .2s ease, color .2s ease;
   color: #fff;
 }
+
 
 /* When open → show minus */
 #mobile-menu .mobile-menu-inner button[data-target].open::after {
